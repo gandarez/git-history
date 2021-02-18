@@ -1,0 +1,20 @@
+on: push
+
+jobs:  
+  release:
+    if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/master'
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: "Create semver tag"
+        id: semver-tag
+        uses: gandarez/semver-action@v0.6.0
+        with:
+          auth_token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease_id: "alpha"
+      - name: "Print output"
+        run: echo "${{ steps.semver-tag.outputs.previous_tag }} -> ${{ steps.semver-tag.outputs.semver_tag }}"
