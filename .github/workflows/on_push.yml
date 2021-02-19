@@ -18,5 +18,5 @@ jobs:
         uses: gandarez/semver-action@v1.4.0
         with:
           prerelease_id: "alpha"
-          auth_token: ${{ secrets.GITHUB_TOKEN }}
+          auth_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           debug: "true"
