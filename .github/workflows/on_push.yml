@@ -15,9 +15,8 @@ jobs:
           fetch-depth: 0
       - name: "Create semver tag"
         id: semver-tag
-        uses: gandarez/semver-action@v1.3.2
+        uses: gandarez/semver-action@v1.4.0
         with:
           prerelease_id: "alpha"
-          user_email: "<>"
-          username: "WakaTime Actions"
+          auth_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           debug: "true"
